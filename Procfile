@@ -1,0 +1,1 @@
+web: phantomjs hello.js
