@@ -1,1 +1,1 @@
-web: phantomjs simpleserver.js 9999
+web: phantomjs simpleserver.js 80
