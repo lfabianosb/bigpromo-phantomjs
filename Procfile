@@ -1,1 +1,1 @@
-web: phantomjs hello.js
+web: phantomjs simpleserver.js 9999
