@@ -45,7 +45,7 @@ var listening = server.listen(port, function (request, response) {
                     response.write(bestPrices);
                     page.close();
                     response.close();
-                }, 15000);
+                }, 20000);
 
             } else {
                 console.log('Erro ao carregar a URL ' + request.post.target);
