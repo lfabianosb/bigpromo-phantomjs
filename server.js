@@ -52,8 +52,8 @@ var listening = server.listen(port, function (request, response) {
                 // we set the headers here
                 response.statusCode = 200;
                 response.headers = {"Cache":"no-cache", "Content-Type":"text/html"};
-                response.write('<html><body><h1>ERRO</h1><div id='erro'>Erro ao consultar a URL ' 
-                    + request.post.target + '</div></body></html>');
+                response.write("<html><body><h1>ERRO</h1><div id='erro'>Erro ao consultar a URL " 
+                    + request.post.target + "</div></body></html>");
                 page.close();
                 response.close();
             }
@@ -61,7 +61,7 @@ var listening = server.listen(port, function (request, response) {
     } else {
         console.log('No target defined');
         response.statusCode = 200;
-        response.write('<html><body><h1>ERRO</h1><div id='erro'>No target defined</div></body></html>');
+        response.write("<html><body><h1>ERRO</h1><div id='erro'>No target defined</div></body></html>");
         response.close();
     }
 });
