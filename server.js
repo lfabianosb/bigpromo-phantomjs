@@ -38,10 +38,8 @@ var listening = server.listen(port, function (request, response) {
             
                     console.log('prices: ' + bestPrices + '\n');
 
-                    // we set the headers here
                     response.statusCode = 200;
                     response.headers = {"Cache":"no-cache", "Content-Type":"application/json"};
-                    // now we write the body
                     response.write(bestPrices);
                     page.close();
                     response.close();
@@ -49,19 +47,19 @@ var listening = server.listen(port, function (request, response) {
 
             } else {
                 console.log('Erro ao carregar a URL ' + request.post.target);
-                // we set the headers here
-                response.statusCode = 200;
-                response.headers = {"Cache":"no-cache", "Content-Type":"text/html"};
-                response.write("<html><body><h1>ERRO</h1><div id='erro'>Erro ao consultar a URL " 
-                    + request.post.target + "</div></body></html>");
+
+                response.statusCode = 502; // Bad Gateway
+                response.headers = {"Cache":"no-cache", "Content-Type":"text/plain"};
+                response.write("URL not loaded: " + request.post.target);
                 page.close();
                 response.close();
             }
         });
     } else {
         console.log('No target defined');
-        response.statusCode = 200;
-        response.write("<html><body><h1>ERRO</h1><div id='erro'>No target defined</div></body></html>");
+        response.statusCode = 500;
+        response.headers = {"Cache":"no-cache", "Content-Type":"text/plain"};
+        response.write("No target defined");
         response.close();
     }
 });
