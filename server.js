@@ -3,6 +3,7 @@
 var server = require('webserver').create();
 var system = require('system');
 var port = system.env.PORT || 8080;
+var timeout = system.env.TIMEOUT || 30000;
 
 var listening = server.listen(port, function (request, response) {
     if (request.post.target) {
@@ -43,7 +44,7 @@ var listening = server.listen(port, function (request, response) {
                     response.write(bestPrices);
                     page.close();
                     response.close();
-                }, 24000);
+                }, timeout);
 
             } else {
                 console.log('Erro ao carregar a URL ' + request.post.target);
